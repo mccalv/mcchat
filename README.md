@@ -8,4 +8,4 @@ sending a private message to a specific user
 
 
 A demonstration video:
-<wiki:video url="http://www.youtube.com/watch?v=-33-0DcUfS4"/>
+http://www.youtube.com/watch?v=-33-0DcUfS4
