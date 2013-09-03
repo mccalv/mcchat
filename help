@@ -1,0 +1,10 @@
+******************************************************
+Welcome to the Chat Client
+******************************************************
+Use the following command to use the CHAT
+/room "[ROOMNAME]" to change the current room
+/nickname "[NICKNAME]" to change your nickname
+/[NICKNAME] "[MESSAGE]" to send a private message to the nickname specified
+/list "ALL" to get all participants nickname and rooms
+/list "[ROOMNAME]" to see all client in the relative rom
+******************************************************
