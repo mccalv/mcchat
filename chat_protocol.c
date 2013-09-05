@@ -115,7 +115,7 @@ struct command_t  *parseCommand(char *msg){
     *msg = '\n';
     
    
-   s
+   
     return c;
     
 } 
