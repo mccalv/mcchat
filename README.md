@@ -8,7 +8,7 @@ Functionality provided by the server are:
 * changing host nickname
 * sending a private message to a specific user
 
-The list of the possible options exposed  by the chat are 
+The list of the possible options exposed  by the chat are: 
 
 ******************************************************
 Welcome to the Chat Client
