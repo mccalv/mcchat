@@ -1,10 +1,24 @@
-/**
- University of Torvergata 
- Student Mirko Calvaresi 
- Professore Francesco Lo Presti 
- A simple client server CHAT based
+/*
+ * Copyright 2009-2013 Mirko Calvaresi.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
  
- */ 
+ 
+ 
+/**
+Utility file with functions to open and reads content from FS
+*/
 #include "basic.h"
 
 
@@ -22,7 +36,9 @@ char  *parseInt(int input)
     
 };
 
-
+/*
+Opens a file in a given location and returns its content as char *
+*/
 char *fileContentToString(char *location){
     
     FILE *fp;
@@ -43,82 +59,6 @@ char *fileContentToString(char *location){
  
     return string;
 }
-/*
-int main(){
-    
-    char pippo[5];
-    sprintf(pippo, "%d", 12);
-    printf ("Number %s \n",pippo);
-    printf ("%s",fileContentToString("help"));
-    char command [10];
-    char value [10];
-    
-    char *tokenstring = "/command value";
-    
-    
-    //sscanf("/command test", "/%s %s", command,value);
-    
-    //printf("COMMAND TEST %s %s\n", command, value);
-    sscanf("f/command value", "%*[^/]%s %s", command,value);
-    printf("Ciao %s %s\n", command, value);
-     command[0]= '\0';
-    value[0]= '\0';
-    sscanf("dasda asdasdas asdasd command value", "/%s %s", command,value);
-    printf("Ciao %s %s\n", command, value);
-    
-    return 0;
-}
- */
-/*
-int main (){
 
-    char command[10];
-    char value[10];
-    char *msg = "adasd /commang value";
-    
-    
-    sscanf(msg, "%*[^ ] /%s %s", command,value);
-    
-    char *pipo;
-    strcpy(command,pipo);
-    
-    printf("COMMAND VALUE PIPP [%s] [%s] [%s]\n", command, value, pipo);
-    
-     msg = "adasd /list ";
-    sscanf(msg, "%*[^ ] /%s %s", command,value);
-    
-    printf("COMMAND VALUE PIPP [%s] [%s] [%s]\n", command, value, pipo);
-    
-    msg = "adasd /pippo ancora";
-    sscanf(msg, "%*[^ ] /%s %s", command,value);
-    
-    printf("COMMAND VALUE PIPP [%s] [%s] [%s]\n", command, value, pipo);
-   
-    
-    char *pippo = "ciao";
-    char newVal[10];
-
-     
-}
-*/
-
-
-/*
-
-int main (){
-    struct command_t *t =  parseCommand("a /list 'mirko'");
-    printf ("Valore di command e value [%s] [%s]\n", t->command, t->value);
-    struct command_t *to =  parseCommand("a/nick 'pippo'  ");
-    printf ("Valore di command e value [%s] [%s]\n", to->command, to->value);
-    struct command_t *too =  parseCommand("asdasd /nick");
-    printf ("Valore di command e value [%s] [%s]\n", too->command, too->value);
-    
-    too =  parseCommand("asdasd ");
-    printf ("Valore di command e value [%s] [%s]\n", too->command, too->value);
-    
-    too =  parseCommand("asdasd /list \"a\"");
-    printf ("Valore di command e value [%s] [%s]\n", too->command, too->value);
-    
-}*/
 
 

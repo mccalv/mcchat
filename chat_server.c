@@ -1,18 +1,22 @@
-/**
- University of Torvergata 
- Student Mirko Calvaresi 
- Professore Francesco Lo Presti 
- A simple client server CHAT based
- 
- */ 
+/*
+ * Copyright 2009-2013 Mirko Calvaresi.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "basic.h"
 
 /*
- typedef void Sigfunc(int);
- 
- Sigfunc* signal(int signum, Sigfunc *handler);
- 
- void sig_chld_handler(int signum);
+ Invoked then a clients leaves the chat
  */
 
 void clientLeave(int fd, fd_set *readfds, char fd_array[], int *num_clients, struct node_t **head){
@@ -54,7 +58,7 @@ int main(int argc, char *argv[]){
     char kb_msg[MSG_SIZE + 10]; 
     int result;
     
-    //INIZIALIZE A LIST OF NODES 
+    //Initialises the node list (represented as linked list)
     struct node_t *HEAD = NULL;
     
     
@@ -87,27 +91,11 @@ int main(int argc, char *argv[]){
         
      
         
-        /*  Now wait for clients and requests */
+        /*  Endless loop: waiting for clients and requests */
         while (1) {
             testfds = readfds;
             
-            /*            
-             
-             sigaddset(&blockset, SIGINT);
-             sigprocmask(SIG_BLOCK, &blockset, NULL);
-             
-             sa.sa_handler = sig_chld_handler;                   sa.sa_flags = 0;
-             sigemptyset(&sa.sa_mask);
-             
-             sigaction(SIGTERM, &sa, NULL);	sigaddset(&blockset, SIGTERM);
-             sigaction(SIGINT, &sa, NULL);	sigaddset(&blockset, SIGINT);
-             sigaction(SIGHUP, &sa, NULL);	sigaddset(&blockset, SIGHUP);
-             sigaction(SIGALRM, &sa, NULL);	sigaddset(&blockset, SIGALRM);
-             sigaction(SIGSTOP, &sa, NULL);	sigaddset(&blockset, SIGSTOP);
-             
-             sigemptyset(&emptyset);
-             
-             */
+         
             
             struct timeval tv;
             /* Wait up to 10 seconds. */
@@ -147,16 +135,12 @@ int main(int argc, char *argv[]){
                             
                             
                             /*Client ID*/
-                            
-                            
                             num_clients++;
                             printf("Client %d joined\n",num_clients);
                             notifyToAllRoomMembers(getNodeById(client_sockfd,HEAD), HEAD, "[SYSTEM]>A new client has joined the chat\n");
                             fflush(stdout);
                             
-                           // sprintf(msg,"M%2d",client_sockfd);
-                            /*write 2 byte clientID */
-                            //send(client_sockfd,msg,strlen(msg),0);
+                          
                         }
                         else {
                             sprintf(msg, "XSorry, too many clients.  Try again later.\n");
@@ -196,8 +180,7 @@ int main(int argc, char *argv[]){
                             
                         }
                         
-                        /*Process Client specific activity*/
-                        //printf("server - read\n");
+                    
                         //read data from open so_acket
                         result = readline(fd, msg, MSG_SIZE);
                         
@@ -276,14 +259,13 @@ int main(int argc, char *argv[]){
                             
                             
                             
-                            /*concatinate the client id with the client's message*/
+                            /*Concatinates the client id with the client's message*/
                             char messageToBeSent[256];
                             
                             sprintf (messageToBeSent,"[%s]>%s",currentClient->nickname, msg );
-                            //strcat(kb_msg,msg+1);                                        
+                                                                
                             
                             /*print to other clients*/
-                            
                             notifyToAllRoomMembers(currentClient,HEAD,messageToBeSent);
                                                      
                             /*print to server*/
@@ -306,28 +288,4 @@ int main(int argc, char *argv[]){
     
 }
 
-/*
- Sigfunc *signal(int signum, Sigfunc *func)
- {
- struct sigaction	act, oact;
- 
- act.sa_handler = func;
- sigemptyset(&act.sa_mask);	
- act.sa_flags = 0;
- if (signum != SIGALRM) 
- act.sa_flags |= SA_RESTART;  
- if (sigaction(signum, &act, &oact) < 0)
- return(SIG_ERR);
- return(oact.sa_handler);
- }
- 
- 
- void sig_chld_handler(int signum)
- {  
- got_SIGCHLD = signum;
- printf("Reveived signal %d\n", signum);
- exit(EXIT_SUCCESS);
- int	status;
- 
- return;
- }*/
+

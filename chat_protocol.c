@@ -1,17 +1,25 @@
-/**
- University of Torvergata 
- Student Mirko Calvaresi 
- Professore Francesco Lo Presti 
- A simple client server CHAT based
- 
- */ 
+/*
+ * Copyright 2009-2013 Mirko Calvaresi.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "basic.h"
 
 /**
- Parse a command coming from a client and return a command_t
+ Parses a command coming from a client and return a command_t struct
  The string representing the command should be provided in the following format 
  [/command] '[value]'
- The value in particular must be delimited by ' or "" in order to allow spaces and multiple workd (for example for private message)
+ The value in particular must be delimited by ' or "" in order to allow spaces and multiple words (for example for private message)
  */
 struct command_t  *parseCommand(char *msg){
     
@@ -106,7 +114,8 @@ struct command_t  *parseCommand(char *msg){
     *msg  = '\0';
     *msg = '\n';
     
-    //printf ("Valore di command e value [%s] [%s]\n", c->command, c->value);
+   
+   s
     return c;
     
 } 
@@ -147,7 +156,7 @@ void notifyToAllRoomMembers(struct node_t *client, struct node_t   *head, char *
 }
 
 /**
- Populate the list of the chat members and write it to the chat
+ Populates the list of the chat members and write it to the chat
  */
 void printchatMembers(struct node_t *head, struct node_t *client, char *room){
     char *message;
