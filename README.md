@@ -1,4 +1,6 @@
-A simple Client Server Textual Chat with Berkley API The aim of the project is to create the a multi room room based on Berkley Socket API. Functionality provided by the server are:
+A simple Client Server C Textual chat
+The aim of the project is to create the a multi room chat based on Berkley Socket API (http://en.wikipedia.org/wiki/Berkeley_sockets).
+Functionality provided by the server are:
 
 * concurrent access of multiple clients
 * maintaining and showing client list
